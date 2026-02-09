@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: url("https://images.unsplash.com/photo-1482192596544-9eb780fc7f66") no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Snow animation */
+.snow {
+  position: absolute;
+  top: -10px;
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+  }
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 25px;
+  text-align: center;
+  width: 320px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+h1 {
+  color: #2d6a4f;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #333;
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+}
+
+#yes {
+  background: #40916c;
+  color: white;
+}
+
+#no {
+  background: #d00000;
+  color: white;
+  position: absolute;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Garima ❄️</h1>
+  <p>In this cold winter,<br>do you love me? 🏔️❤️</p>
+
+  <button id="yes">Yes</button>
+  <button id="no">No</button>
+</div>
+
+<script>
+// Snow generator
+for (let i = 0; i < 50; i++) {
+  let snow = document.createElement("div");
+  snow.className = "snow";
+  snow.style.left = Math.random() * 100 + "vw";
+  snow.style.animationDuration = (Math.random() * 5 + 5) + "s";
+  snow.style.opacity = Math.random();
+  snow.style.width = snow.style.height = Math.random() * 6 + 4 + "px";
+  document.body.appendChild(snow);
+}
+
+// YES button → WhatsApp
+document.getElementById("yes").onclick = function () {
+  const phoneNumber = "918851316501";
+  const message = "Garima loves you ❤️❄️";
+  const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank");
+};
+
+// NO button runs away
+const noBtn = document.getElementById("no");
+
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * 220;
+  const y = Math.random() * 180;
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+});
+</script>
+
+</body>
+</html>
